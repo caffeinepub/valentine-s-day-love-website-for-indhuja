@@ -1,0 +1,23 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-12T15:25:12.849Z",
+  "summary": "The diff shows work toward a hidden YouTube player hook using the exact requested URL, with logic to initialize the YouTube IFrame API once, queue a pending play if the user interacts before readiness, and attempt unmute/play when ready. However, the main hook file is truncated, so key acceptance-criteria behaviors (first-interaction event handling and unmute retry-on-next-gesture) cannot be fully verified from the provided evidence. Two non-functional/meta files were also modified without being requested.",
+  "missing_requirements": [],
+  "hallucinated_features": [
+    {
+      "description": "Updated generated/metadata documentation files (frontend-file-summaries.txt and project_state.json) even though the BuildRequest only asked for frontend behavior changes related to hidden YouTube playback.",
+      "reason": "No requirement requested updating repo summary/metadata files; these changes are not necessary to satisfy REQ-35/REQ-36 and are outside the stated scope.",
+      "evidence": [
+        "frontend-file-summaries.txt",
+        "project_state.json"
+      ]
+    }
+  ],
+  "confidence": 0.46,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/hooks/useHiddenYouTube.ts",
+    "project_state.json"
+  ]
+}

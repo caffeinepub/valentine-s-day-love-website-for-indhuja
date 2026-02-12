@@ -1,0 +1,58 @@
+{
+  "kind": "build_request",
+  "title": "Ensure hidden YouTube link video plays reliably on user interaction",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-35",
+      "text": "Make the hidden YouTube playback start reliably for the provided link \"https://youtu.be/FJuR5mfEU_k?si=gUWQCKXNK-ivBMOB\" after the first user interaction (tap/click/keypress), even if that interaction happens before the YouTube player finishes initializing.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "Play the youtube link video"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On a fresh page load, the YouTube player is initialized once and remains non-visible (no new visible UI is introduced).",
+        "If the user taps/clicks before the YouTube player is ready, playback still starts automatically as soon as the player becomes ready (without requiring a second interaction).",
+        "If the YouTube player is already ready when the first interaction occurs, playback starts immediately on that interaction.",
+        "No repeated player initialization occurs during normal interactions (including scrolling)."
+      ]
+    },
+    {
+      "id": "REQ-36",
+      "text": "After the first user interaction, ensure the hidden YouTube video plays with audible audio (unmuted) unless browser policy blocks unmuting; in that case, keep playing and unmute as soon as a permitted user gesture occurs, without adding any visible controls.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "Play the youtube link video"
+        ]
+      },
+      "acceptanceCriteria": [
+        "After the first user interaction, the YouTube player attempts to unmute and play.",
+        "If unmute is blocked by browser policy, the app does not crash or blank; it retries unmuting only on a subsequent permitted user gesture.",
+        "No visible controls, buttons, overlays, or layout/styling/text/animation changes are introduced to support YouTube playback."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not add or change any visible UI, layout, styling, text, or animations; YouTube playback must remain hidden/non-visible.",
+    "Use the exact YouTube link provided: https://youtu.be/FJuR5mfEU_k?si=gUWQCKXNK-ivBMOB.",
+    "Frontend must not modify any files under frontend/src/components/ui or other immutable paths listed in SYSTEM_CONTEXT."
+  ],
+  "nonGoals": [
+    "Adding a visible YouTube embed or any on-screen media controls.",
+    "Changing or removing existing Valentine’s Day sections, animations, or copy.",
+    "Backend changes (Motoko) or storing playback state server-side."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

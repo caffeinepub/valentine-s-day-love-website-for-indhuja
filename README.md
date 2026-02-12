@@ -1,2 +1,3 @@
-# valentine-s-day-love-website-for-indhuja
-Exported from Caffeine project: Valentine's Day Love Website for Indhuja 💜
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

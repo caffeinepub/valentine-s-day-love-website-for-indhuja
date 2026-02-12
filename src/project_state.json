@@ -1,0 +1,371 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 27,
+  "summary": "Premium Valentine's Day love website for \"Indhuja 💜\" (HTML/CSS/JS, royal purple + soft pink glassmorphism) with animations, love letter, CTA effects, and background music—now requiring removal of the existing visible <video> element and switching media playback to a provided YouTube link without changing any UI/layout/styling/text/animations.",
+  "architectural_notes": [
+    "Tech stack limited to HTML, CSS, and JavaScript (no frameworks).",
+    "Theme: royal purple + soft pink romantic gradient with glowing emphasis on the name \"Indhuja 💜\" across the site.",
+    "Design style: glassmorphism, smooth fade-in animations, elegant romantic font, and mobile-responsive layout.",
+    "Do not modify existing UI/design/layout or existing HTML structure/styling; only add necessary JavaScript and hidden video elements for audio playback.",
+    "Do not autoplay on page load; music must begin ONLY after the first user tap anywhere on the screen to satisfy mobile autoplay restrictions.",
+    "On first user tap: play song1.mp4 at volume 0.4, looping disabled.",
+    "On \"For My Indhuja 💜\" button click: stop song1, then play song2.mp4 from the beginning; apply the specified volume (value provided as \"0.\" in conversation—needs exact value).",
+    "Do not change any UI, layout, styling, text, or animations; only remove the existing <video> element and switch playback to the provided YouTube link."
+  ],
+  "known_issues": [
+    "Requested copy/style change: remove the word \"Beautiful\" from the sentence and replace it with \"Lifeline\"; update the heart on the right side of \"Muralidharan\" to a pink heart (🩷).",
+    "Mobile autoplay restriction currently prevents music from starting; must switch to user-gesture start flow using <audio>.",
+    "Song2 target volume is ambiguous/incomplete in latest requirements (given as \"0.\"); confirm intended value (e.g., 0.6).",
+    "New requirement conflicts with prior audio approach (hidden <audio>, no visible controls): reconcile whether song1.mp4 should be played via visible <video> instead of hidden background audio.",
+    "Visible video player (song1.mp4) is not playing on the page; fix playback so it reliably starts (including mobile autoplay restrictions / user-gesture fallback).",
+    "User reports the visible video player still does not play (issue persists after latest deployment).",
+    "Visible video player still does not play on the initial/previous page as expected (user reports continued playback failure).",
+    "Potential requirement conflict/feasibility risk: playing a YouTube link without adding UI (and under browser autoplay/embedding restrictions) may be blocked or require an embed/iframe approach that could impact current constraints.",
+    "User reports the page becomes blank when scrolling (likely a regression in the YouTube/hidden playback update); investigate and fix scroll-related blank rendering issue."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-a-single-page-valentine-s-day-website-experience-dedicated-to-indhuja-using-a-royal-purple-soft-pink-romantic-gradient-theme-applying-a-consistent-premium-dreamy-glassmorphism-visual-style-across-all-sections",
+      "title": "Create a single-page Valentine’s Day website experience dedicated to \"Indhuja 💜\" using a royal purple + soft pink romantic gradient theme, applying a consistent premium, dreamy, glassmorphism visual style across all sections.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-full-screen-hero-section-with-a-purple-pink-gradient-background-floating-glowing-hearts-and-an-animated-headline-and-subtext-where-only-the-name-indhuja-receives-the-dedicated-glow-pulse-shimmer-treatment",
+      "title": "Implement a full-screen Hero section with a purple-pink gradient background, floating glowing hearts, and an animated headline and subtext where only the name \"Indhuja 💜\" receives the dedicated glow/pulse/shimmer treatment.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-dedicated-name-animation-effect-for-indhuja-typing-in-reveal-on-first-appearance-continuous-glow-subtle-zoom-in-out-shimmer-and-sparkles-around-the-name",
+      "title": "Implement the dedicated name animation effect for \"Indhuja 💜\": typing-in reveal on first appearance, continuous glow, subtle zoom in/out, shimmer, and sparkles around the name.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-love-letter-section-presented-inside-a-glassmorphism-card-and-display-the-provided-multi-line-love-letter-using-a-typing-animation-while-preserving-line-breaks",
+      "title": "Create a Love Letter section presented inside a glassmorphism card and display the provided multi-line love letter using a typing animation while preserving line breaks.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-special-call-to-action-button-labeled-for-my-indhuja-that-triggers-a-heart-explosion-animation-on-click-and-opens-a-popup-containing-the-provided-message",
+      "title": "Add a special call-to-action button labeled \"For My Indhuja 💜\" that triggers a heart explosion animation on click and opens a popup containing the provided message.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-background-ambience-effects-soft-romantic-background-music-user-friendly-start-behavior-continuous-floating-purple-hearts-and-a-sparkle-particle-effect-that-complements-the-theme-without-overwhelming-content",
+      "title": "Add background ambience effects: soft romantic background music (user-friendly start behavior), continuous floating purple hearts, and a sparkle particle effect that complements the theme without overwhelming content.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-footer-that-displays-the-exact-sign-off-text-forever-yours-muralidharan-and-style-it-to-match-the-romantic-premium-theme",
+      "title": "Add a footer that displays the exact sign-off text \"Forever Yours, Muralidharan 💜\" and style it to match the romantic premium theme.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-love-letter-closing-sentence-to-remove-the-word-beautiful-and-replace-it-with-lifeline-i-e-change-happy-valentine-s-day-my-beautiful-indhuja-to-happy-valentine-s-day-my-lifeline-indhuja",
+      "title": "Update the love letter closing sentence to remove the word \"beautiful\" and replace it with \"lifeline\" (i.e., change \"Happy Valentine's Day, my beautiful Indhuja 💜.\" to \"Happy Valentine's Day, my lifeline Indhuja 💜.\").",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-change-the-heart-emoji-to-the-right-of-the-name-muralidharan-in-the-footer-sign-off-from-a-purple-heart-to-a-pink-heart",
+      "title": "Change the heart emoji to the right of the name \"Muralidharan\" in the footer sign-off from a purple heart to a pink heart (🩷).",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-background-music-playback-using-the-two-provided-uploaded-video-files-song1-mp4-and-song2-mp4-while-playing-audio-only-video-must-be-completely-hidden-and-without-modifying-any-existing-visible-ui-design-layout-or-styling",
+      "title": "Add background music playback using the two provided uploaded video files (song1.mp4 and song2.mp4) while playing audio only (video must be completely hidden) and without modifying any existing visible UI, design, layout, or styling.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-on-page-load-automatically-start-playing-audio-from-song1-mp4-at-40-volume-with-looping-disabled",
+      "title": "On page load, automatically start playing audio from song1.mp4 at 40% volume with looping disabled.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-when-the-existing-cta-button-labeled-for-my-indhuja-is-clicked-stop-song1-mp4-immediately-and-play-song2-mp4-from-the-beginning-at-60-volume-with-looping-disabled",
+      "title": "When the existing CTA button labeled \"For My Indhuja 💜\" is clicked, stop song1.mp4 immediately and play song2.mp4 from the beginning at 60% volume with looping disabled.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-smooth-1-second-fade-transition-between-song1-mp4-and-song2-mp4-when-switching-on-cta-click",
+      "title": "Implement a smooth 1-second fade transition between song1.mp4 and song2.mp4 when switching on CTA click.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-new-audio-implementation-works-on-mobile-devices-and-does-not-add-or-require-any-new-visible-controls-remove-disable-the-existing-floating-musiccontrol-ui-and-its-looping-mp3-playback-so-it-does-not-appear-or-interfere",
+      "title": "Ensure the new audio implementation works on mobile devices and does not add or require any new visible controls; remove/disable the existing floating MusicControl UI and its looping mp3 playback so it does not appear or interfere.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-current-hidden-dual-video-audio-implementation-with-a-hidden-dual-audio-implementation-that-uses-the-existing-files-assets-song1-mp4-and-assets-song2-mp4-without-changing-any-visible-ui-layout-styling-or-adding-new-controls",
+      "title": "Replace the current hidden dual-<video> audio implementation with a hidden dual-<audio> implementation that uses the existing files /assets/song1.mp4 and /assets/song2.mp4, without changing any visible UI, layout, styling, or adding new controls.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-any-attempt-to-autoplay-music-on-page-load-music-playback-must-start-only-after-the-first-user-tap-anywhere-on-the-screen-on-that-first-tap-start-song1-mp4-at-volume-0-4-with-looping-disabled",
+      "title": "Remove any attempt to autoplay music on page load. Music playback must start ONLY after the first user tap anywhere on the screen; on that first tap, start song1.mp4 at volume 0.4 with looping disabled.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-existing-for-my-indhuja-button-click-behavior-so-that-when-it-is-clicked-song1-mp4-is-stopped-immediately-and-song2-mp4-is-started-from-the-beginning-with-looping-disabled-and-volume-set-to-0-0-exactly-as-specified-if-the-cta-click-is-the-first-user-interaction-it-must-satisfy-the-first-tap-requirement-and-still-result-in-song2-mp4-playing-from-the-beginning-with-volume-0-0-after-the-click-handler-completes",
+      "title": "Update the existing \"For My Indhuja 💜\" button click behavior so that when it is clicked: song1.mp4 is stopped immediately, and song2.mp4 is started from the beginning with looping disabled and volume set to 0.0 (exactly as specified). If the CTA click is the first user interaction, it must satisfy the first-tap requirement and still result in song2.mp4 playing from the beginning with volume 0.0 after the click handler completes.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-hidden-background-audio-implementation-so-music-reliably-plays-on-mobile-browsers-with-autoplay-restrictions-while-keeping-the-existing-ui-design-unchanged-audio-must-start-only-after-the-first-user-tap-anywhere-on-the-screen-and-must-use-the-existing-assets-song1-mp4-and-assets-song2-mp4-sources-via-hidden-audio-elements",
+      "title": "Fix the hidden background audio implementation so music reliably plays on mobile browsers with autoplay restrictions, while keeping the existing UI/design unchanged. Audio must start only after the first user tap anywhere on the screen, and must use the existing /assets/song1.mp4 and /assets/song2.mp4 sources via hidden <audio> elements.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-on-the-first-user-tap-anywhere-on-the-screen-start-playback-of-song1-mp4-from-the-beginning-with-volume-set-to-0-4-and-looping-disabled-and-ensure-the-first-tap-listener-is-fully-removed-disabled-after-successful-start-so-it-cannot-later-start-song1-unexpectedly",
+      "title": "On the first user tap anywhere on the screen, start playback of song1.mp4 from the beginning with volume set to 0.4 and looping disabled, and ensure the first-tap listener is fully removed/disabled after successful start so it cannot later start song1 unexpectedly.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-when-the-existing-cta-button-labeled-for-my-indhuja-is-clicked-immediately-stop-song1-pause-and-reset-to-the-beginning-and-start-song2-from-the-beginning-with-looping-disabled-and-volume-set-to-0-0-if-the-cta-click-is-the-first-user-interaction-it-must-satisfy-the-user-gesture-requirement-and-result-in-song2-playing-and-must-not-cause-song1-to-start-on-a-later-tap",
+      "title": "When the existing CTA button labeled \"For My Indhuja 💜\" is clicked, immediately stop song1 (pause and reset to the beginning) and start song2 from the beginning with looping disabled and volume set to 0.0. If the CTA click is the first user interaction, it must satisfy the user-gesture requirement and result in song2 playing (and must not cause song1 to start on a later tap).",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-visible-html5-video-player-inside-the-page-s-existing-empty-space-use-existing-layout-container-do-not-reposition-or-restyle-any-existing-sections-the-video-source-must-be-song1-mp4-served-from-the-existing-public-assets-path-i-e-assets-song1-mp4-the-video-must-be-responsive-fit-the-container-width-maintain-aspect-ratio-display-with-rounded-corners-and-have-a-soft-shadow",
+      "title": "Add a visible HTML5 video player inside the page’s existing empty space (use existing layout/container; do not reposition or restyle any existing sections). The video source must be song1.mp4 (served from the existing public assets path, i.e., \"/assets/song1.mp4\"). The video must be responsive (fit the container width), maintain aspect ratio, display with rounded corners, and have a soft shadow.",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-configure-the-new-visible-video-player-to-attempt-autoplay-with-sound-on-and-implement-the-specified-mobile-fallback-behavior-exactly-if-autoplay-with-sound-is-blocked-start-playback-after-the-first-user-interaction-using-document-addeventlistener-click-function-video-play-once-true",
+      "title": "Configure the new visible video player to attempt autoplay with sound on, and implement the specified mobile fallback behavior exactly: if autoplay with sound is blocked, start playback after the first user interaction using `document.addEventListener('click', function(){ video.play(); }, { once: true });`.",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-visible-in-page-html5-video-player-source-assets-song1-mp4-so-it-reliably-plays-on-desktop-and-mobile-browsers-keep-the-existing-layout-and-styling-unchanged-but-update-the-playback-logic-to-handle-autoplay-restrictions-and-ensure-playback-is-triggered-only-when-the-video-is-ready-and-or-after-a-valid-first-user-interaction-if-autoplay-is-blocked",
+      "title": "Fix the visible in-page HTML5 video player (source: \"/assets/song1.mp4\") so it reliably plays on desktop and mobile browsers. Keep the existing layout and styling unchanged, but update the playback logic to handle autoplay restrictions and ensure playback is triggered only when the video is ready and/or after a valid first user interaction if autoplay is blocked.",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-render-the-existing-visiblevideoplayer-source-assets-song1-mp4-in-the-page-s-existing-empty-space-between-the-lovelettersection-and-the-ctasection-i-e-after-lovelettersection-and-before-ctasection-in-frontend-src-app-tsx-without-repositioning-or-restyling-any-other-existing-sections",
+      "title": "Render the existing VisibleVideoPlayer (source: \"/assets/song1.mp4\") in the page’s existing empty space between the LoveLetterSection and the CTASection (i.e., after <LoveLetterSection /> and before <CTASection /> in frontend/src/App.tsx), without repositioning or restyling any other existing sections.",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-visiblevideoplayer-is-not-rendered-inside-the-herosection-so-the-page-has-only-a-single-visible-instance-of-the-video-player-in-the-chosen-empty-space-location-between-love-letter-and-cta",
+      "title": "Ensure the VisibleVideoPlayer is not rendered inside the HeroSection so the page has only a single visible instance of the video player in the chosen empty-space location (between Love Letter and CTA).",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-visiblevideoplayer-autoplay-restriction-fallback-to-match-the-required-behavior-exactly-if-autoplay-with-sound-is-blocked-register-a-once-only-document-click-handler-using-document-addeventlistener-click-function-video-play-once-true-to-start-playback-after-the-first-user-interaction",
+      "title": "Update the VisibleVideoPlayer autoplay restriction fallback to match the required behavior exactly: if autoplay with sound is blocked, register a once-only document click handler using `document.addEventListener('click', function(){ video.play(); }, { once: true });` to start playback after the first user interaction.",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-in-page-visiblevideoplayer-so-the-video-at-source-assets-song1-mp4-reliably-plays-on-desktop-and-mobile-browsers-including-when-autoplay-with-sound-is-blocked",
+      "title": "Fix the in-page VisibleVideoPlayer so the video at source \"/assets/song1.mp4\" reliably plays on desktop and mobile browsers, including when autoplay with sound is blocked.",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-harden-visiblevideoplayer-load-start-sequencing-so-playback-attempts-occur-only-after-the-element-has-been-instructed-to-load-and-after-at-least-one-readiness-event-e-g-canplay-loadeddata-or-a-user-gesture-fallback-to-avoid-cases-where-play-is-invoked-before-the-media-is-actually-loadable",
+      "title": "Harden VisibleVideoPlayer load/start sequencing so playback attempts occur only after the element has been instructed to load and after at least one readiness event (e.g., canplay/loadeddata) or a user gesture fallback, to avoid cases where play() is invoked before the media is actually loadable.",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-visible-in-page-video-player-frontend-src-components-valentine-visiblevideoplayer-tsx-source-assets-song1-mp4-so-it-reliably-starts-playback-on-the-initial-page-view-across-desktop-and-mobile-browsers-while-preserving-the-current-layout-and-styling",
+      "title": "Fix the visible in-page video player (frontend/src/components/valentine/VisibleVideoPlayer.tsx, source \"/assets/song1.mp4\") so it reliably starts playback on the initial page view across desktop and mobile browsers, while preserving the current layout and styling.",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-existing-visible-html5-video-element-from-the-page-completely-including-stopping-it-from-rendering-anywhere-in-the-react-component-tree",
+      "title": "Remove the existing visible HTML5 <video> element from the page completely (including stopping it from rendering anywhere in the React component tree).",
+      "reqIds": [
+        "REQ-30"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-playback-of-the-provided-youtube-video-link-https-youtu-be-fjur5mfeu-k-si-guwqckxnk-ivbmob-without-adding-or-changing-any-visible-ui-layout-styling-text-or-animations-playback-must-be-non-visible-hidden",
+      "title": "Implement playback of the provided YouTube video link \"https://youtu.be/FJuR5mfEU_k?si=gUWQCKXNK-ivBMOB\" without adding or changing any visible UI, layout, styling, text, or animations (playback must be non-visible/hidden).",
+      "reqIds": [
+        "REQ-31"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-issue-where-scrolling-the-page-causes-the-ui-to-go-blank-white-empty-screen-while-keeping-all-existing-visible-ui-layout-styling-text-and-animations-unchanged",
+      "title": "Fix the issue where scrolling the page causes the UI to go blank (white/empty screen) while keeping all existing visible UI, layout, styling, text, and animations unchanged.",
+      "reqIds": [
+        "REQ-32"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-harden-the-hidden-youtube-playback-integration-so-it-cannot-cause-re-render-loops-repeated-player-initialization-or-dom-js-errors-during-normal-interactions-including-scrolling",
+      "title": "Harden the hidden YouTube playback integration so it cannot cause re-render loops, repeated player initialization, or DOM/JS errors during normal interactions (including scrolling).",
+      "reqIds": [
+        "REQ-33"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-any-background-animation-canvas-event-listener-issues-that-could-contribute-to-blank-rendering-during-scroll-e-g-incorrect-add-removeeventlistener-pairing-without-changing-the-visual-output-of-the-effects",
+      "title": "Fix any background animation/canvas event listener issues that could contribute to blank rendering during scroll (e.g., incorrect add/removeEventListener pairing), without changing the visual output of the effects.",
+      "reqIds": [
+        "REQ-34"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-the-hidden-youtube-playback-start-reliably-for-the-provided-link-https-youtu-be-fjur5mfeu-k-si-guwqckxnk-ivbmob-after-the-first-user-interaction-tap-click-keypress-even-if-that-interaction-happens-before-the-youtube-player-finishes-initializing",
+      "title": "Make the hidden YouTube playback start reliably for the provided link \"https://youtu.be/FJuR5mfEU_k?si=gUWQCKXNK-ivBMOB\" after the first user interaction (tap/click/keypress), even if that interaction happens before the YouTube player finishes initializing.",
+      "reqIds": [
+        "REQ-35"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-after-the-first-user-interaction-ensure-the-hidden-youtube-video-plays-with-audible-audio-unmuted-unless-browser-policy-blocks-unmuting-in-that-case-keep-playing-and-unmute-as-soon-as-a-permitted-user-gesture-occurs-without-adding-any-visible-controls",
+      "title": "After the first user interaction, ensure the hidden YouTube video plays with audible audio (unmuted) unless browser policy blocks unmuting; in that case, keep playing and unmute as soon as a permitted user gesture occurs, without adding any visible controls.",
+      "reqIds": [
+        "REQ-36"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Build full-screen Hero section with purple-pink gradient background, floating glowing hearts, and animated headline/subtext with glow only on the name \"Indhuja 💜\" (pulse + shimmer).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Implement advanced name animation for \"Indhuja 💜\": typing-in reveal, glow, subtle zoom in/out, and sparkles around the name.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Create Love Letter section displayed via typing animation with the provided multi-line message addressed to \"Indhuja 💜\".",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Add special CTA button \"For My Indhuja 💜\" that triggers a heart explosion animation and shows a popup message: \"Indhuja 💜, You are My Today, Tomorrow & Always 💜\".",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add background ambience: soft romantic music, continuous floating purple hearts, and sparkle particle effects.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add footer text \"Forever Yours, Muralidharan 💜\" and apply overall design system: glassmorphism cards, smooth fade-in animations, elegant romantic font, mobile responsive, dreamy UI.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Add background music using hidden video elements (song1.mp4 autoplay on load at 40% volume, no loop; on \"For My Indhuja 💜\" button click stop song1 and play song2.mp4 from start at 60% volume, no loop) with a smooth 1-second fade transition between songs; pure HTML/CSS/JS and mobile-compatible.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Remove the existing in-page <video> element completely and instead play the provided YouTube video link (https://youtu.be/FJuR5mfEU_k?si=gUWQCKXNK-ivBMOB) without changing any UI/layout/styling/text/animations.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Valentine's Day Love Website for Indhuja 💜",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

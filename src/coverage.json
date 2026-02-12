@@ -1,0 +1,49 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-12T15:25:12.852Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 2,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-35",
+        "summary": "Make the hidden YouTube playback start reliably for the provided link \"https://youtu.be/FJuR5mfEU_k?si=gUWQCKXNK-ivBMOB\" after the first user interaction (tap/click/keypress), even if that interaction happens before the YouTube player finishes initializing.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useHiddenYouTube.ts",
+          "frontend/src/components/valentine/HiddenYouTubePlayer.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useHiddenYouTube.ts"
+        ]
+      },
+      {
+        "id": "REQ-36",
+        "summary": "After the first user interaction, ensure the hidden YouTube video plays with audible audio (unmuted) unless browser policy blocks unmuting; in that case, keep playing and unmute as soon as a permitted user gesture occurs, without adding any visible controls.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useHiddenYouTube.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useHiddenYouTube.ts"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/hooks/useHiddenYouTube.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

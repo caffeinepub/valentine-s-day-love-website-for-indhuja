@@ -1,0 +1,41 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-make-the-hidden-youtube-playback-start-reliably-for-the-provided-link-https-youtu-be-fjur5mfeu-k-si-guwqckxnk-ivbmob-after-the-first-user-interaction-tap-click-keypress-even-if-that-interaction-happens-before-the-youtube-player-finishes-initializing",
+      "featureTitle": "Make the hidden YouTube playback start reliably for the provided link \"https://youtu.be/FJuR5mfEU_k?si=gUWQCKXNK-ivBMOB\" after the first user interaction (tap/click/keypress), even if that interaction happens before the YouTube player finishes initializing.",
+      "files": [
+        "frontend/src/hooks/useHiddenYouTube.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-35"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-after-the-first-user-interaction-ensure-the-hidden-youtube-video-plays-with-audible-audio-unmuted-unless-browser-policy-blocks-unmuting-in-that-case-keep-playing-and-unmute-as-soon-as-a-permitted-user-gesture-occurs-without-adding-any-visible-controls",
+      "featureTitle": "After the first user interaction, ensure the hidden YouTube video plays with audible audio (unmuted) unless browser policy blocks unmuting; in that case, keep playing and unmute as soon as a permitted user gesture occurs, without adding any visible controls.",
+      "files": [
+        "frontend/src/hooks/useHiddenYouTube.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-36"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

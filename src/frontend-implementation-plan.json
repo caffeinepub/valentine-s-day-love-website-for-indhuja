@@ -1,0 +1,45 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Reliable hidden YouTube playback after first user interaction",
+  "requirements": [
+    {
+      "id": "REQ-35",
+      "summary": "Guarantee hidden YouTube playback starts after the first user interaction even if the player becomes ready later, without re-initializing the player.",
+      "acceptanceCriteria": [
+        "On a fresh page load, the YouTube player is initialized once and remains non-visible (no new visible UI is introduced).",
+        "If the user taps/clicks before the YouTube player is ready, playback still starts automatically as soon as the player becomes ready (without requiring a second interaction).",
+        "If the YouTube player is already ready when the first interaction occurs, playback starts immediately on that interaction.",
+        "No repeated player initialization occurs during normal interactions (including scrolling)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useHiddenYouTube.ts",
+          "operation": "modify",
+          "description": "Implement a robust first-gesture playback handshake: record a pending-play flag on the first user interaction (click/tap/keypress) and, if the YouTube player is not ready yet, automatically start playback in the onReady handler when initialization completes. Ensure initialization remains single-shot (no repeated player creation) and that playback start is idempotent even if multiple readiness/interaction signals occur."
+        },
+        {
+          "path": "frontend/src/components/valentine/HiddenYouTubePlayer.tsx",
+          "operation": "modify",
+          "description": "Keep the YouTube container fully hidden/non-interactive while ensuring the hook is mounted once and the containerId remains stable; only adjust non-visual wiring if needed to support the improved deferred playback behavior (do not change any visible UI)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-36",
+      "summary": "Attempt audible (unmuted) hidden YouTube playback after first interaction; if unmuting is blocked, keep playing muted and retry unmuting only on a subsequent permitted gesture without adding controls.",
+      "acceptanceCriteria": [
+        "After the first user interaction, the YouTube player attempts to unmute and play.",
+        "If unmute is blocked by browser policy, the app does not crash or blank; it retries unmuting only on a subsequent permitted user gesture.",
+        "No visible controls, buttons, overlays, or layout/styling/text/animation changes are introduced to support YouTube playback."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useHiddenYouTube.ts",
+          "operation": "modify",
+          "description": "Add unmute strategy tied to user gestures: after the first interaction, attempt play + unmute (+ set volume) when ready; if unmute cannot be confirmed (policy restriction), keep playback running and register a lightweight subsequent-gesture listener that retries only the unmute action on the next permitted user gesture, then removes itself once successful. Ensure failures are caught and do not affect rendering or introduce visible UI changes."
+        }
+      ]
+    }
+  ]
+}
